@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import { getGames } from "./GameManager.js"
+import { deleteGame, getGames } from "./GameManager.js"
 import { useHistory } from 'react-router-dom'
 
 export const GameList = (props) => {
@@ -24,6 +24,7 @@ export const GameList = (props) => {
                             <div className="game__players">{game.number_of_players} players needed</div>
                             <div className="game__skillLevel">Skill level is {game.skill_level}</div>
                             <button onClick={()=> history.push(`/games/edit/${game.id}`)}>Edit</button>
+                            <button onClick={() => {deleteGame(game.id).then(setGames)}}>Delete</button>
                         </section>
                     })
                 }
